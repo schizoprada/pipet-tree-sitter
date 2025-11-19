@@ -1,0 +1,74 @@
+==================
+Simple curl block
+==================
+
+curl https://example.com
+h1
+  a
+
+---
+
+(source_file
+  (block
+    (resource_directive
+      (resource_type)
+      (url))
+    (query_line
+      (selector))
+    (query_line
+      (indentation)
+      (selector))))
+
+==================
+Comment
+==================
+
+// This is a comment
+curl https://example.com
+
+---
+
+(source_file
+  (comment)
+  (block
+    (resource_directive
+      (resource_type)
+      (url))))
+
+==================
+Next page selector
+==================
+
+curl https://example.com
+.title
+> a.morelink
+
+---
+
+(source_file
+  (block
+    (resource_directive
+      (resource_type)
+      (url))
+    (query_line
+      (selector))
+    (next_page_line
+      (selector))))
+
+==================
+Pipe operator
+==================
+
+curl https://example.com
+h1 | wc -c
+
+---
+
+(source_file
+  (block
+    (resource_directive
+      (resource_type)
+      (url))
+    (query_line
+      (selector)
+      (pipe_command))))

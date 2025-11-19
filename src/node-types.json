@@ -1,0 +1,172 @@
+[
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "next_page_line",
+          "named": true
+        },
+        {
+          "type": "query_line",
+          "named": true
+        },
+        {
+          "type": "resource_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "next_page_line",
+    "named": true,
+    "fields": {
+      "selector": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "selector",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "indentation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pipe_command",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "query_line",
+    "named": true,
+    "fields": {
+      "selector": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "selector",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "indentation",
+          "named": true
+        },
+        {
+          "type": "pipe_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "resource_directive",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "resource_type",
+            "named": true
+          }
+        ]
+      },
+      "url": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "url",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "resource_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "curl",
+    "named": false
+  },
+  {
+    "type": "indentation",
+    "named": true
+  },
+  {
+    "type": "playwright",
+    "named": false
+  },
+  {
+    "type": "selector",
+    "named": true
+  },
+  {
+    "type": "url",
+    "named": true
+  },
+  {
+    "type": "|",
+    "named": false
+  }
+]
