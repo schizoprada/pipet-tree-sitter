@@ -3,19 +3,21 @@
   "version": "0.1.0",
   "description": "Tree-sitter grammar for Pipet web scraping DSL",
   "main": "bindings/node",
-  "keywords": ["parser", "tree-sitter", "pipet"],
-  "author": {"name": "Joel Yisrael", "email": "schizoprada@gmail.com", "url": "https://github.com/schizoprada"},
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "pipet"
+  ],
+  "author": {
+    "name": "Joel Yisrael",
+    "email": "schizoprada@gmail.com",
+    "url": "https://github.com/schizoprada"
+  },
   "license": "MIT",
   "dependencies": {
     "nan": "^2.17.0"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.8"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.pipet",
-      "file-types": ["pipet"]
-    }
-  ]
+  }
 }

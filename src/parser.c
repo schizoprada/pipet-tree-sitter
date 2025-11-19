@@ -24,19 +24,19 @@ enum {
   sym_url = 5,
   anon_sym_GT = 6,
   sym_indentation = 7,
-  sym_cssquery = 8,
-  sym_jsonquery = 9,
-  sym_jsquery = 10,
-  aux_sym_cssx_token1 = 11,
+  sym_css_selector_query = 8,
+  sym_json_query = 9,
+  sym_js_query = 10,
+  aux_sym_css_selector_token1 = 11,
   anon_sym_PIPE = 12,
   sym_source_file = 13,
   sym_block = 14,
-  sym_directive = 15,
-  sym_typeof = 16,
-  sym_query = 17,
-  sym_nextpage = 18,
-  sym_cssx = 19,
-  sym_pipe = 20,
+  sym_resource_directive = 15,
+  sym_resource_type = 16,
+  sym_query_line = 17,
+  sym_next_page_line = 18,
+  sym_css_selector = 19,
+  sym_pipe_command = 20,
   aux_sym_source_file_repeat1 = 21,
   aux_sym_block_repeat1 = 22,
 };
@@ -50,19 +50,19 @@ static const char * const ts_symbol_names[] = {
   [sym_url] = "url",
   [anon_sym_GT] = ">",
   [sym_indentation] = "indentation",
-  [sym_cssquery] = "cssquery",
-  [sym_jsonquery] = "jsonquery",
-  [sym_jsquery] = "jsquery",
-  [aux_sym_cssx_token1] = "cssx_token1",
+  [sym_css_selector_query] = "css_selector_query",
+  [sym_json_query] = "json_query",
+  [sym_js_query] = "js_query",
+  [aux_sym_css_selector_token1] = "css_selector_token1",
   [anon_sym_PIPE] = "|",
   [sym_source_file] = "source_file",
   [sym_block] = "block",
-  [sym_directive] = "directive",
-  [sym_typeof] = "typeof",
-  [sym_query] = "query",
-  [sym_nextpage] = "nextpage",
-  [sym_cssx] = "cssx",
-  [sym_pipe] = "pipe",
+  [sym_resource_directive] = "resource_directive",
+  [sym_resource_type] = "resource_type",
+  [sym_query_line] = "query_line",
+  [sym_next_page_line] = "next_page_line",
+  [sym_css_selector] = "css_selector",
+  [sym_pipe_command] = "pipe_command",
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_block_repeat1] = "block_repeat1",
 };
@@ -76,19 +76,19 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_url] = sym_url,
   [anon_sym_GT] = anon_sym_GT,
   [sym_indentation] = sym_indentation,
-  [sym_cssquery] = sym_cssquery,
-  [sym_jsonquery] = sym_jsonquery,
-  [sym_jsquery] = sym_jsquery,
-  [aux_sym_cssx_token1] = aux_sym_cssx_token1,
+  [sym_css_selector_query] = sym_css_selector_query,
+  [sym_json_query] = sym_json_query,
+  [sym_js_query] = sym_js_query,
+  [aux_sym_css_selector_token1] = aux_sym_css_selector_token1,
   [anon_sym_PIPE] = anon_sym_PIPE,
   [sym_source_file] = sym_source_file,
   [sym_block] = sym_block,
-  [sym_directive] = sym_directive,
-  [sym_typeof] = sym_typeof,
-  [sym_query] = sym_query,
-  [sym_nextpage] = sym_nextpage,
-  [sym_cssx] = sym_cssx,
-  [sym_pipe] = sym_pipe,
+  [sym_resource_directive] = sym_resource_directive,
+  [sym_resource_type] = sym_resource_type,
+  [sym_query_line] = sym_query_line,
+  [sym_next_page_line] = sym_next_page_line,
+  [sym_css_selector] = sym_css_selector,
+  [sym_pipe_command] = sym_pipe_command,
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
   [aux_sym_block_repeat1] = aux_sym_block_repeat1,
 };
@@ -126,19 +126,19 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_cssquery] = {
+  [sym_css_selector_query] = {
     .visible = true,
     .named = true,
   },
-  [sym_jsonquery] = {
+  [sym_json_query] = {
     .visible = true,
     .named = true,
   },
-  [sym_jsquery] = {
+  [sym_js_query] = {
     .visible = true,
     .named = true,
   },
-  [aux_sym_cssx_token1] = {
+  [aux_sym_css_selector_token1] = {
     .visible = false,
     .named = false,
   },
@@ -154,27 +154,27 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_directive] = {
+  [sym_resource_directive] = {
     .visible = true,
     .named = true,
   },
-  [sym_typeof] = {
+  [sym_resource_type] = {
     .visible = true,
     .named = true,
   },
-  [sym_query] = {
+  [sym_query_line] = {
     .visible = true,
     .named = true,
   },
-  [sym_nextpage] = {
+  [sym_next_page_line] = {
     .visible = true,
     .named = true,
   },
-  [sym_cssx] = {
+  [sym_css_selector] = {
     .visible = true,
     .named = true,
   },
-  [sym_pipe] = {
+  [sym_pipe_command] = {
     .visible = true,
     .named = true,
   },
@@ -431,7 +431,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == ' ') ADVANCE(28);
       END_STATE();
     case 29:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'a') ADVANCE(40);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -440,7 +440,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 30:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'g') ADVANCE(31);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -449,7 +449,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 31:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'h') ADVANCE(37);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -458,7 +458,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 32:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'i') ADVANCE(30);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -467,7 +467,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 33:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'l') ADVANCE(29);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -476,7 +476,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 34:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'l') ADVANCE(23);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -485,7 +485,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 35:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'r') ADVANCE(32);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -494,7 +494,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 36:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'r') ADVANCE(34);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -503,7 +503,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 37:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 't') ADVANCE(25);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -512,7 +512,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 38:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'u') ADVANCE(36);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -521,7 +521,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 39:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'w') ADVANCE(35);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -530,7 +530,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 40:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == 'y') ADVANCE(39);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
@@ -539,7 +539,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 41:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(41);
       if (lookahead != 0 &&
@@ -547,13 +547,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(41);
       END_STATE();
     case 42:
-      ACCEPT_TOKEN(sym_cssquery);
+      ACCEPT_TOKEN(sym_css_selector_query);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '|') ADVANCE(42);
       END_STATE();
     case 43:
-      ACCEPT_TOKEN(sym_jsonquery);
+      ACCEPT_TOKEN(sym_json_query);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(43);
       if (lookahead != 0 &&
@@ -561,7 +561,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(43);
       END_STATE();
     case 44:
-      ACCEPT_TOKEN(sym_jsquery);
+      ACCEPT_TOKEN(sym_js_query);
       if (lookahead == '#' ||
           lookahead == '@') ADVANCE(43);
       if (lookahead != 0 &&
@@ -569,20 +569,20 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '|') ADVANCE(44);
       END_STATE();
     case 45:
-      ACCEPT_TOKEN(sym_jsquery);
+      ACCEPT_TOKEN(sym_js_query);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '|') ADVANCE(45);
       END_STATE();
     case 46:
-      ACCEPT_TOKEN(aux_sym_cssx_token1);
+      ACCEPT_TOKEN(aux_sym_css_selector_token1);
       if (lookahead == '\t' ||
           lookahead == ' ') ADVANCE(46);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(47);
       END_STATE();
     case 47:
-      ACCEPT_TOKEN(aux_sym_cssx_token1);
+      ACCEPT_TOKEN(aux_sym_css_selector_token1);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(47);
       END_STATE();
@@ -634,16 +634,16 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_curl] = ACTIONS(1),
     [anon_sym_playwright] = ACTIONS(1),
     [anon_sym_GT] = ACTIONS(1),
-    [sym_cssquery] = ACTIONS(1),
-    [sym_jsonquery] = ACTIONS(1),
-    [sym_jsquery] = ACTIONS(1),
+    [sym_css_selector_query] = ACTIONS(1),
+    [sym_json_query] = ACTIONS(1),
+    [sym_js_query] = ACTIONS(1),
     [anon_sym_PIPE] = ACTIONS(1),
   },
   [1] = {
     [sym_source_file] = STATE(22),
     [sym_block] = STATE(10),
-    [sym_directive] = STATE(18),
-    [sym_typeof] = STATE(27),
+    [sym_resource_directive] = STATE(18),
+    [sym_resource_type] = STATE(27),
     [aux_sym_source_file_repeat1] = STATE(10),
     [ts_builtin_sym_end] = ACTIONS(3),
     [anon_sym_LF] = ACTIONS(5),
@@ -652,8 +652,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_playwright] = ACTIONS(7),
   },
   [2] = {
-    [sym_query] = STATE(2),
-    [sym_nextpage] = STATE(2),
+    [sym_query_line] = STATE(2),
+    [sym_next_page_line] = STATE(2),
     [aux_sym_block_repeat1] = STATE(2),
     [ts_builtin_sym_end] = ACTIONS(9),
     [anon_sym_LF] = ACTIONS(11),
@@ -662,13 +662,13 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_playwright] = ACTIONS(11),
     [anon_sym_GT] = ACTIONS(13),
     [sym_indentation] = ACTIONS(16),
-    [sym_cssquery] = ACTIONS(19),
-    [sym_jsonquery] = ACTIONS(19),
-    [sym_jsquery] = ACTIONS(19),
+    [sym_css_selector_query] = ACTIONS(19),
+    [sym_json_query] = ACTIONS(19),
+    [sym_js_query] = ACTIONS(19),
   },
   [3] = {
-    [sym_query] = STATE(4),
-    [sym_nextpage] = STATE(4),
+    [sym_query_line] = STATE(4),
+    [sym_next_page_line] = STATE(4),
     [aux_sym_block_repeat1] = STATE(4),
     [ts_builtin_sym_end] = ACTIONS(22),
     [anon_sym_LF] = ACTIONS(24),
@@ -677,13 +677,13 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_playwright] = ACTIONS(24),
     [anon_sym_GT] = ACTIONS(26),
     [sym_indentation] = ACTIONS(28),
-    [sym_cssquery] = ACTIONS(30),
-    [sym_jsonquery] = ACTIONS(30),
-    [sym_jsquery] = ACTIONS(30),
+    [sym_css_selector_query] = ACTIONS(30),
+    [sym_json_query] = ACTIONS(30),
+    [sym_js_query] = ACTIONS(30),
   },
   [4] = {
-    [sym_query] = STATE(2),
-    [sym_nextpage] = STATE(2),
+    [sym_query_line] = STATE(2),
+    [sym_next_page_line] = STATE(2),
     [aux_sym_block_repeat1] = STATE(2),
     [ts_builtin_sym_end] = ACTIONS(32),
     [anon_sym_LF] = ACTIONS(34),
@@ -692,9 +692,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_playwright] = ACTIONS(34),
     [anon_sym_GT] = ACTIONS(26),
     [sym_indentation] = ACTIONS(28),
-    [sym_cssquery] = ACTIONS(30),
-    [sym_jsonquery] = ACTIONS(30),
-    [sym_jsquery] = ACTIONS(30),
+    [sym_css_selector_query] = ACTIONS(30),
+    [sym_json_query] = ACTIONS(30),
+    [sym_js_query] = ACTIONS(30),
   },
 };
 
@@ -709,9 +709,9 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_curl,
       anon_sym_playwright,
       anon_sym_GT,
-      sym_cssquery,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_css_selector_query,
+      sym_json_query,
+      sym_js_query,
   [15] = 2,
     ACTIONS(40), 2,
       ts_builtin_sym_end,
@@ -722,9 +722,9 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_curl,
       anon_sym_playwright,
       anon_sym_GT,
-      sym_cssquery,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_css_selector_query,
+      sym_json_query,
+      sym_js_query,
   [30] = 2,
     ACTIONS(44), 2,
       ts_builtin_sym_end,
@@ -735,9 +735,9 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_curl,
       anon_sym_playwright,
       anon_sym_GT,
-      sym_cssquery,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_css_selector_query,
+      sym_json_query,
+      sym_js_query,
   [45] = 2,
     ACTIONS(48), 2,
       ts_builtin_sym_end,
@@ -748,9 +748,9 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_curl,
       anon_sym_playwright,
       anon_sym_GT,
-      sym_cssquery,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_css_selector_query,
+      sym_json_query,
+      sym_js_query,
   [60] = 2,
     ACTIONS(52), 2,
       ts_builtin_sym_end,
@@ -761,16 +761,16 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_curl,
       anon_sym_playwright,
       anon_sym_GT,
-      sym_cssquery,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_css_selector_query,
+      sym_json_query,
+      sym_js_query,
   [75] = 6,
     ACTIONS(56), 1,
       ts_builtin_sym_end,
     STATE(18), 1,
-      sym_directive,
+      sym_resource_directive,
     STATE(27), 1,
-      sym_typeof,
+      sym_resource_type,
     ACTIONS(7), 2,
       anon_sym_curl,
       anon_sym_playwright,
@@ -784,9 +784,9 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(60), 1,
       ts_builtin_sym_end,
     STATE(18), 1,
-      sym_directive,
+      sym_resource_directive,
     STATE(27), 1,
-      sym_typeof,
+      sym_resource_type,
     ACTIONS(62), 2,
       anon_sym_LF,
       sym_comment,
@@ -800,34 +800,34 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(68), 1,
       anon_sym_GT,
     ACTIONS(70), 1,
-      sym_cssquery,
+      sym_css_selector_query,
     ACTIONS(72), 2,
-      sym_jsonquery,
-      sym_jsquery,
+      sym_json_query,
+      sym_js_query,
   [130] = 3,
     ACTIONS(74), 1,
       anon_sym_LF,
     ACTIONS(76), 1,
       anon_sym_PIPE,
     STATE(25), 1,
-      sym_pipe,
+      sym_pipe_command,
   [140] = 3,
     ACTIONS(76), 1,
       anon_sym_PIPE,
     ACTIONS(78), 1,
       anon_sym_LF,
     STATE(20), 1,
-      sym_pipe,
+      sym_pipe_command,
   [150] = 2,
     ACTIONS(80), 1,
-      aux_sym_cssx_token1,
+      aux_sym_css_selector_token1,
     STATE(17), 1,
-      sym_cssx,
+      sym_css_selector,
   [157] = 2,
     ACTIONS(80), 1,
-      aux_sym_cssx_token1,
+      aux_sym_css_selector_token1,
     STATE(23), 1,
-      sym_cssx,
+      sym_css_selector,
   [164] = 1,
     ACTIONS(82), 1,
       anon_sym_LF,
@@ -836,7 +836,7 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_LF,
   [172] = 1,
     ACTIONS(86), 1,
-      aux_sym_cssx_token1,
+      aux_sym_css_selector_token1,
   [176] = 1,
     ACTIONS(74), 1,
       anon_sym_LF,
@@ -911,16 +911,16 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [30] = {.entry = {.count = 1, .reusable = false}}, SHIFT(14),
   [32] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_block, 3),
   [34] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_block, 3),
-  [36] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_nextpage, 4, .production_id = 3),
-  [38] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_nextpage, 4, .production_id = 3),
-  [40] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query, 3),
-  [42] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query, 3),
-  [44] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_nextpage, 3, .production_id = 2),
-  [46] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_nextpage, 3, .production_id = 2),
-  [48] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query, 2),
-  [50] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query, 2),
-  [52] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query, 4),
-  [54] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query, 4),
+  [36] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_next_page_line, 4, .production_id = 3),
+  [38] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_next_page_line, 4, .production_id = 3),
+  [40] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query_line, 3),
+  [42] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query_line, 3),
+  [44] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_next_page_line, 3, .production_id = 2),
+  [46] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_next_page_line, 3, .production_id = 2),
+  [48] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query_line, 2),
+  [50] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query_line, 2),
+  [52] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_query_line, 4),
+  [54] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_query_line, 4),
   [56] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1),
   [58] = {.entry = {.count = 1, .reusable = true}}, SHIFT(11),
   [60] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2),
@@ -936,14 +936,14 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [82] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
   [84] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [86] = {.entry = {.count = 1, .reusable = true}}, SHIFT(26),
-  [88] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_typeof, 1),
+  [88] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_resource_type, 1),
   [90] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
   [92] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
-  [94] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_directive, 2, .production_id = 1),
+  [94] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_resource_directive, 2, .production_id = 1),
   [96] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
-  [98] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pipe, 2),
+  [98] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pipe_command, 2),
   [100] = {.entry = {.count = 1, .reusable = true}}, SHIFT(24),
-  [102] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_cssx, 1),
+  [102] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_css_selector, 1),
 };
 
 #ifdef __cplusplus

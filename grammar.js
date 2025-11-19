@@ -18,60 +18,57 @@ module.exports = grammar({
     comment: $ => token(seq('//', /.*/)),
 
     block: $ => seq(
-      $.directive,
+      $.resource_directive,
       '\n',
       repeat(
         choice(
-          $.query,
-          $.nextpage
+          $.query_line,
+          $.next_page_line
         )
       )
     ),
 
-    directive: $ => seq(
-      field('type', $.typeof),
+    resource_directive: $ => seq(
+      field('type', $.resource_type),
       field('url', $.url)
     ),
 
-    typeof: $ => choice(
+    resource_type: $ => choice(
       'curl',
       'playwright'
     ),
 
     url: $ => /[^\s\n]+/,
 
-    query: $ => seq(
+    query_line: $ => seq(
       optional($.indentation),
       choice(
-        $.cssquery,
-        $.jsonquery,
-        $.jsquery
+        $.css_selector_query,
+        $.json_query,
+        $.js_query
       ),
-      optional($.pipe),
+      optional($.pipe_command),
       '\n'
     ),
 
-    nextpage: $ => seq(
+    next_page_line: $ => seq(
       optional($.indentation),
       '>',
-      field('selector', $.cssx),
+      field('selector', $.css_selector),
       '\n'
     ),
 
     indentation: $ => /[ \t]+/,
 
-    // CSS selector - has ., #, >, or common HTML tags
-    cssquery: $ => /[a-zA-Z#.\[\]:*\-][^|\n]*/,
+    css_selector_query: $ => /[a-zA-Z#.\[\]:*\-][^|\n]*/,
 
-    // JSON query - GJSON syntax with # or @
-    jsonquery: $ => /[a-zA-Z_][^|\n]*[#@][^|\n]*/,
+    json_query: $ => /[a-zA-Z_][^|\n]*[#@][^|\n]*/,
 
-    // JavaScript query - for playwright blocks
-    jsquery: $ => /[a-zA-Z_$][^|\n]*/,
+    js_query: $ => /[a-zA-Z_$][^|\n]*/,
 
-    cssx: $ => /[^\n]+/,
+    css_selector: $ => /[^\n]+/,
 
-    pipe: $ => seq(
+    pipe_command: $ => seq(
       '|',
       /[^\n]+/
     ),

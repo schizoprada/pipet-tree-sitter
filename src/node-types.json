@@ -8,53 +8,27 @@
       "required": true,
       "types": [
         {
-          "type": "directive",
+          "type": "next_page_line",
           "named": true
         },
         {
-          "type": "nextpage",
+          "type": "query_line",
           "named": true
         },
         {
-          "type": "query",
+          "type": "resource_directive",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "cssx",
+    "type": "css_selector",
     "named": true,
     "fields": {}
   },
   {
-    "type": "directive",
-    "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "typeof",
-            "named": true
-          }
-        ]
-      },
-      "url": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "url",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "nextpage",
+    "type": "next_page_line",
     "named": true,
     "fields": {
       "selector": {
@@ -62,7 +36,7 @@
         "required": true,
         "types": [
           {
-            "type": "cssx",
+            "type": "css_selector",
             "named": true
           }
         ]
@@ -80,12 +54,12 @@
     }
   },
   {
-    "type": "pipe",
+    "type": "pipe_command",
     "named": true,
     "fields": {}
   },
   {
-    "type": "query",
+    "type": "query_line",
     "named": true,
     "fields": {},
     "children": {
@@ -93,7 +67,7 @@
       "required": true,
       "types": [
         {
-          "type": "cssquery",
+          "type": "css_selector_query",
           "named": true
         },
         {
@@ -101,19 +75,50 @@
           "named": true
         },
         {
-          "type": "jsonquery",
+          "type": "js_query",
           "named": true
         },
         {
-          "type": "jsquery",
+          "type": "json_query",
           "named": true
         },
         {
-          "type": "pipe",
+          "type": "pipe_command",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "resource_directive",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "resource_type",
+            "named": true
+          }
+        ]
+      },
+      "url": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "url",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "resource_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -135,11 +140,6 @@
     }
   },
   {
-    "type": "typeof",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\n",
     "named": false
   },
@@ -152,7 +152,7 @@
     "named": true
   },
   {
-    "type": "cssquery",
+    "type": "css_selector_query",
     "named": true
   },
   {
@@ -164,11 +164,11 @@
     "named": true
   },
   {
-    "type": "jsonquery",
+    "type": "js_query",
     "named": true
   },
   {
-    "type": "jsquery",
+    "type": "json_query",
     "named": true
   },
   {

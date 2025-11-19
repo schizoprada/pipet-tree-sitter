@@ -42,7 +42,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "directive"
+          "name": "resource_directive"
         },
         {
           "type": "STRING",
@@ -55,18 +55,18 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "query"
+                "name": "query_line"
               },
               {
                 "type": "SYMBOL",
-                "name": "nextpage"
+                "name": "next_page_line"
               }
             ]
           }
         }
       ]
     },
-    "directive": {
+    "resource_directive": {
       "type": "SEQ",
       "members": [
         {
@@ -74,7 +74,7 @@
           "name": "type",
           "content": {
             "type": "SYMBOL",
-            "name": "typeof"
+            "name": "resource_type"
           }
         },
         {
@@ -87,7 +87,7 @@
         }
       ]
     },
-    "typeof": {
+    "resource_type": {
       "type": "CHOICE",
       "members": [
         {
@@ -104,7 +104,7 @@
       "type": "PATTERN",
       "value": "[^\\s\\n]+"
     },
-    "query": {
+    "query_line": {
       "type": "SEQ",
       "members": [
         {
@@ -124,15 +124,15 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "cssquery"
+              "name": "css_selector_query"
             },
             {
               "type": "SYMBOL",
-              "name": "jsonquery"
+              "name": "json_query"
             },
             {
               "type": "SYMBOL",
-              "name": "jsquery"
+              "name": "js_query"
             }
           ]
         },
@@ -141,7 +141,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "pipe"
+              "name": "pipe_command"
             },
             {
               "type": "BLANK"
@@ -154,7 +154,7 @@
         }
       ]
     },
-    "nextpage": {
+    "next_page_line": {
       "type": "SEQ",
       "members": [
         {
@@ -178,7 +178,7 @@
           "name": "selector",
           "content": {
             "type": "SYMBOL",
-            "name": "cssx"
+            "name": "css_selector"
           }
         },
         {
@@ -191,23 +191,23 @@
       "type": "PATTERN",
       "value": "[ \\t]+"
     },
-    "cssquery": {
+    "css_selector_query": {
       "type": "PATTERN",
       "value": "[a-zA-Z#.\\[\\]:*\\-][^|\\n]*"
     },
-    "jsonquery": {
+    "json_query": {
       "type": "PATTERN",
       "value": "[a-zA-Z_][^|\\n]*[#@][^|\\n]*"
     },
-    "jsquery": {
+    "js_query": {
       "type": "PATTERN",
       "value": "[a-zA-Z_$][^|\\n]*"
     },
-    "cssx": {
+    "css_selector": {
       "type": "PATTERN",
       "value": "[^\\n]+"
     },
-    "pipe": {
+    "pipe_command": {
       "type": "SEQ",
       "members": [
         {
