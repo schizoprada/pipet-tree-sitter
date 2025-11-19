@@ -120,21 +120,12 @@
           ]
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "css_selector_query"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "json_query"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "js_query"
-            }
-          ]
+          "type": "FIELD",
+          "name": "selector",
+          "content": {
+            "type": "SYMBOL",
+            "name": "selector"
+          }
         },
         {
           "type": "CHOICE",
@@ -178,7 +169,7 @@
           "name": "selector",
           "content": {
             "type": "SYMBOL",
-            "name": "css_selector"
+            "name": "selector"
           }
         },
         {
@@ -191,21 +182,9 @@
       "type": "PATTERN",
       "value": "[ \\t]+"
     },
-    "css_selector_query": {
+    "selector": {
       "type": "PATTERN",
-      "value": "[a-zA-Z#.\\[\\]:*\\-][^|\\n]*"
-    },
-    "json_query": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_][^|\\n]*[#@][^|\\n]*"
-    },
-    "js_query": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_$][^|\\n]*"
-    },
-    "css_selector": {
-      "type": "PATTERN",
-      "value": "[^\\n]+"
+      "value": "[^|\\n>]+"
     },
     "pipe_command": {
       "type": "SEQ",

@@ -14,10 +14,10 @@ h1
       (resource_type)
       (url))
     (query_line
-      (css_selector_query))
+      (selector))
     (query_line
       (indentation)
-      (css_selector_query))))
+      (selector))))
 
 ==================
 Comment
@@ -51,9 +51,9 @@ curl https://example.com
       (resource_type)
       (url))
     (query_line
-      (css_selector_query))
+      (selector))
     (next_page_line
-      (css_selector))))
+      (selector))))
 
 ==================
 Pipe operator
@@ -70,5 +70,5 @@ h1 | wc -c
       (resource_type)
       (url))
     (query_line
-      (css_selector_query)
+      (selector)
       (pipe_command))))

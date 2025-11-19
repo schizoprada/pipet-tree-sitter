@@ -23,11 +23,6 @@
     }
   },
   {
-    "type": "css_selector",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "next_page_line",
     "named": true,
     "fields": {
@@ -36,7 +31,7 @@
         "required": true,
         "types": [
           {
-            "type": "css_selector",
+            "type": "selector",
             "named": true
           }
         ]
@@ -61,25 +56,24 @@
   {
     "type": "query_line",
     "named": true,
-    "fields": {},
+    "fields": {
+      "selector": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "selector",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "css_selector_query",
-          "named": true
-        },
-        {
           "type": "indentation",
-          "named": true
-        },
-        {
-          "type": "js_query",
-          "named": true
-        },
-        {
-          "type": "json_query",
           "named": true
         },
         {
@@ -152,10 +146,6 @@
     "named": true
   },
   {
-    "type": "css_selector_query",
-    "named": true
-  },
-  {
     "type": "curl",
     "named": false
   },
@@ -164,16 +154,12 @@
     "named": true
   },
   {
-    "type": "js_query",
-    "named": true
-  },
-  {
-    "type": "json_query",
-    "named": true
-  },
-  {
     "type": "playwright",
     "named": false
+  },
+  {
+    "type": "selector",
+    "named": true
   },
   {
     "type": "url",

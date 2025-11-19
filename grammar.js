@@ -42,11 +42,7 @@ module.exports = grammar({
 
     query_line: $ => seq(
       optional($.indentation),
-      choice(
-        $.css_selector_query,
-        $.json_query,
-        $.js_query
-      ),
+      field('selector', $.selector),
       optional($.pipe_command),
       '\n'
     ),
@@ -54,19 +50,13 @@ module.exports = grammar({
     next_page_line: $ => seq(
       optional($.indentation),
       '>',
-      field('selector', $.css_selector),
+      field('selector', $.selector),
       '\n'
     ),
 
     indentation: $ => /[ \t]+/,
 
-    css_selector_query: $ => /[a-zA-Z#.\[\]:*\-][^|\n]*/,
-
-    json_query: $ => /[a-zA-Z_][^|\n]*[#@][^|\n]*/,
-
-    js_query: $ => /[a-zA-Z_$][^|\n]*/,
-
-    css_selector: $ => /[^\n]+/,
+    selector: $ => /[^|\n>]+/,
 
     pipe_command: $ => seq(
       '|',
