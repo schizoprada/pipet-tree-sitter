@@ -18,47 +18,60 @@ module.exports = grammar({
     comment: $ => token(seq('//', /.*/)),
 
     block: $ => seq(
-      $.resource_directive,
+      $.directive,
       '\n',
       repeat(
         choice(
-          $.query_line,
-          $.next_page_line
+          $.query,
+          $.nextpage
         )
       )
     ),
 
-    resource_directive: $ => seq(
-      field('type', $.resource_type),
+    directive: $ => seq(
+      field('type', $.typeof),
       field('url', $.url)
     ),
 
-    resource_type: $ => choice(
+    typeof: $ => choice(
       'curl',
       'playwright'
     ),
 
     url: $ => /[^\s\n]+/,
 
-    query_line: $ => seq(
+    query: $ => seq(
       optional($.indentation),
-      field('selector', $.selector),
-      optional($.pipe_command),
+      choice(
+        $.cssquery,
+        $.jsonquery,
+        $.jsquery
+      ),
+      optional($.pipe),
       '\n'
     ),
 
-    next_page_line: $ => seq(
+    nextpage: $ => seq(
       optional($.indentation),
       '>',
-      field('selector', $.selector),
+      field('selector', $.cssx),
       '\n'
     ),
 
     indentation: $ => /[ \t]+/,
 
-    selector: $ => /[^|\n>]+/,
+    // CSS selector - has ., #, >, or common HTML tags
+    cssquery: $ => /[a-zA-Z#.\[\]:*\-][^|\n]*/,
 
-    pipe_command: $ => seq(
+    // JSON query - GJSON syntax with # or @
+    jsonquery: $ => /[a-zA-Z_][^|\n]*[#@][^|\n]*/,
+
+    // JavaScript query - for playwright blocks
+    jsquery: $ => /[a-zA-Z_$][^|\n]*/,
+
+    cssx: $ => /[^\n]+/,
+
+    pipe: $ => seq(
       '|',
       /[^\n]+/
     ),

@@ -10,14 +10,14 @@ h1
 
 (source_file
   (block
-    (resource_directive
-      (resource_type)
+    (directive
+      (typeof)
       (url))
-    (query_line
-      (selector))
-    (query_line
+    (query
+      (cssquery))
+    (query
       (indentation)
-      (selector))))
+      (cssquery))))
 
 ==================
 Comment
@@ -31,8 +31,8 @@ curl https://example.com
 (source_file
   (comment)
   (block
-    (resource_directive
-      (resource_type)
+    (directive
+      (typeof)
       (url))))
 
 ==================
@@ -47,13 +47,13 @@ curl https://example.com
 
 (source_file
   (block
-    (resource_directive
-      (resource_type)
+    (directive
+      (typeof)
       (url))
-    (query_line
-      (selector))
-    (next_page_line
-      (selector))))
+    (query
+      (cssquery))
+    (nextpage
+      (cssx))))
 
 ==================
 Pipe operator
@@ -66,9 +66,9 @@ h1 | wc -c
 
 (source_file
   (block
-    (resource_directive
-      (resource_type)
+    (directive
+      (typeof)
       (url))
-    (query_line
-      (selector)
-      (pipe_command))))
+    (query
+      (cssquery)
+      (pipe))))

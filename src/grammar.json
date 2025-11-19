@@ -42,7 +42,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "resource_directive"
+          "name": "directive"
         },
         {
           "type": "STRING",
@@ -55,18 +55,18 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "query_line"
+                "name": "query"
               },
               {
                 "type": "SYMBOL",
-                "name": "next_page_line"
+                "name": "nextpage"
               }
             ]
           }
         }
       ]
     },
-    "resource_directive": {
+    "directive": {
       "type": "SEQ",
       "members": [
         {
@@ -74,7 +74,7 @@
           "name": "type",
           "content": {
             "type": "SYMBOL",
-            "name": "resource_type"
+            "name": "typeof"
           }
         },
         {
@@ -87,7 +87,7 @@
         }
       ]
     },
-    "resource_type": {
+    "typeof": {
       "type": "CHOICE",
       "members": [
         {
@@ -104,7 +104,7 @@
       "type": "PATTERN",
       "value": "[^\\s\\n]+"
     },
-    "query_line": {
+    "query": {
       "type": "SEQ",
       "members": [
         {
@@ -120,19 +120,28 @@
           ]
         },
         {
-          "type": "FIELD",
-          "name": "selector",
-          "content": {
-            "type": "SYMBOL",
-            "name": "selector"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cssquery"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "jsonquery"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "jsquery"
+            }
+          ]
         },
         {
           "type": "CHOICE",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "pipe_command"
+              "name": "pipe"
             },
             {
               "type": "BLANK"
@@ -145,7 +154,7 @@
         }
       ]
     },
-    "next_page_line": {
+    "nextpage": {
       "type": "SEQ",
       "members": [
         {
@@ -169,7 +178,7 @@
           "name": "selector",
           "content": {
             "type": "SYMBOL",
-            "name": "selector"
+            "name": "cssx"
           }
         },
         {
@@ -182,11 +191,23 @@
       "type": "PATTERN",
       "value": "[ \\t]+"
     },
-    "selector": {
+    "cssquery": {
       "type": "PATTERN",
-      "value": "[^|\\n>]+"
+      "value": "[a-zA-Z#.\\[\\]:*\\-][^|\\n]*"
     },
-    "pipe_command": {
+    "jsonquery": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][^|\\n]*[#@][^|\\n]*"
+    },
+    "jsquery": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_$][^|\\n]*"
+    },
+    "cssx": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
+    },
+    "pipe": {
       "type": "SEQ",
       "members": [
         {
